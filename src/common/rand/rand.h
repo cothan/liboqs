@@ -70,6 +70,16 @@ OQS_API void OQS_randombytes(uint8_t *random_array, size_t bytes_to_read);
  */
 OQS_API void OQS_randombytes_nist_kat_init_256bit(const uint8_t *entropy_input, const uint8_t *personalization_string);
 
+/**
+ * Saves the state of the NIST DRBG, allowing it to be recovered later.
+ */
+OQS_API void OQS_randombytes_nist_kat_save_state(void);
+
+/**
+ * Restores a previously saved NIST DRBG state.
+ */
+OQS_API void OQS_randombytes_nist_kat_restore_state(void);
+
 #if defined(__cplusplus)
 } // extern "C"
 #endif
