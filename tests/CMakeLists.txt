@@ -102,6 +102,13 @@ target_link_libraries(speed_sig PRIVATE ${API_TEST_DEPS})
 add_executable(dump_alg_info dump_alg_info.c)
 target_link_libraries(dump_alg_info PRIVATE ${API_TEST_DEPS})
 
+# Intermediate values vector tests
+add_executable(vectors_sig vectors_sig.c)
+target_link_libraries(vectors_sig PRIVATE ${API_TEST_DEPS})
+
+add_executable(vectors_kem vectors_kem.c)
+target_link_libraries(vectors_kem PRIVATE ${API_TEST_DEPS})
+
 # Enable Valgrind-based timing side-channel analysis for test_kem and test_sig
 if(OQS_ENABLE_TEST_CONSTANT_TIME AND NOT OQS_DEBUG_BUILD)
     message(WARNING "OQS_ENABLE_TEST_CONSTANT_TIME is incompatible with CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}.")
@@ -131,5 +138,5 @@ add_custom_target(
     run_tests
     COMMAND ${CMAKE_COMMAND} -E env OQS_BUILD_DIR=${CMAKE_BINARY_DIR} ${PYTHON3_EXEC} -m pytest --verbose --numprocesses=auto --ignore=scripts/copy_from_upstream/repos
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    DEPENDS oqs dump_alg_info example_kem kat_kem test_kem example_sig kat_sig test_sig test_sig_mem test_kem_mem ${UNIX_TESTS}
+    DEPENDS oqs dump_alg_info example_kem kat_kem test_kem example_sig kat_sig test_sig test_sig_mem test_kem_mem vectors_sig vectors_kem ${UNIX_TESTS}
     USES_TERMINAL)
