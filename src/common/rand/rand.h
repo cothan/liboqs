@@ -72,11 +72,13 @@ OQS_API void OQS_randombytes_nist_kat_init_256bit(const uint8_t *entropy_input, 
 
 /**
  * Saves the state of the NIST DRBG, allowing it to be recovered later.
+ * Calls to this function overwrite previously saved state; hence, only
+ * the most recently saved state can be restored.
  */
 OQS_API void OQS_randombytes_nist_kat_save_state(void);
 
 /**
- * Restores a previously saved NIST DRBG state.
+ * Restores the most recently saved NIST DRBG state.
  */
 OQS_API void OQS_randombytes_nist_kat_restore_state(void);
 
