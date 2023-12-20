@@ -71,7 +71,7 @@ add_executable(example_kem example_kem.c)
 target_link_libraries(example_kem PRIVATE ${API_TEST_DEPS})
 
 # KAT KEM needs to call the internal SHA3 functions directly, hence the extra dependencies
-add_executable(kat_kem kat_kem.c ${ALL_OBJS})
+add_executable(kat_kem kat_kem.c test_helpers.c ${ALL_OBJS})
 target_link_libraries(kat_kem PRIVATE ${API_TEST_DEPS} ${INTERNAL_TEST_DEPS})
 
 add_executable(test_kem test_kem.c)
@@ -87,7 +87,7 @@ target_link_libraries(speed_kem PRIVATE ${API_TEST_DEPS})
 add_executable(example_sig example_sig.c)
 target_link_libraries(example_sig PRIVATE ${API_TEST_DEPS})
 
-add_executable(kat_sig kat_sig.c)
+add_executable(kat_sig kat_sig.c test_helpers.c)
 target_link_libraries(kat_sig PRIVATE ${API_TEST_DEPS})
 
 add_executable(test_sig test_sig.c)
