@@ -137,6 +137,7 @@ endif()
 set(PUBLIC_HEADERS ${PROJECT_SOURCE_DIR}/src/oqs.h
                    ${PROJECT_SOURCE_DIR}/src/common/common.h
                    ${PROJECT_SOURCE_DIR}/src/common/rand/rand.h
+                   ${PROJECT_SOURCE_DIR}/src/common/rand/rand_nist_internal.h
                    ${PROJECT_SOURCE_DIR}/src/common/aes/aes.h
                    ${PROJECT_SOURCE_DIR}/src/common/sha2/sha2.h
                    ${PROJECT_SOURCE_DIR}/src/common/sha3/sha3.h
